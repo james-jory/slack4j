@@ -89,7 +89,7 @@ public class Payload {
 	}
 
 	public void setIconUrl(String iconUrl) {
-		setIconEmoji(null);
+		this.iconEmoji = null;
 		this.iconUrl = iconUrl;
 	}
 
@@ -98,7 +98,7 @@ public class Payload {
 	}
 
 	public void setIconEmoji(String iconEmoji) {
-		setIconUrl(null);
+		this.iconUrl = null;
 		this.iconEmoji = iconEmoji;
 	}
 

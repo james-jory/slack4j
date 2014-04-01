@@ -1,0 +1,7 @@
+#
+# Sample properties file used for testing Slack messages.
+#
+# To run tests, rename this file to test.properties and set your slack URL below. 
+#
+slack.url=YOUR_SLACK_URL_GOES_HERE
+slack.channel=#slack4j-test
