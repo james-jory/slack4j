@@ -2,6 +2,42 @@
 
 Java driver for the [Slack API](https://api.slack.com/).
 
+Currently the Incoming WebHooks integration is the only one supported. Others may be added 
+in the future as necessary.
+
+## Incoming WebHooks
+
+Posting messages to a Slack channel using the Incoming WebHook integration is simple.
+
+```
+try {
+	// Your slack incoming webhook URL (obtained from integrations for your Slack account).
+	String slackUrl = "...";
+	SlackWebHook slack = new SlackWebHook(slackUrl);
+	
+	// Send a simple message, specifying an optional channel and username.
+	slack.send(Payload.instance("Simple message").channel("#mychannel").username("slack4j-test"));
+	
+	// Sending a message with an attachment with fields is easy too.
+	Payload payload = Payload.instance("Message with attachment")
+			.channel("#mychannel")
+			.iconEmoji(":sunny:")
+			.username("slack4j-test")
+			.attachments(Attachment.instance("This is fallback message")
+				.color("good")
+				.text("This is attachment text")
+				.pretext("This is attachment pretext")
+				.fields(
+					Field.instance("Field1").value("Value1").isShort(true), 
+					Field.instance("Field2").value("Value2").isShort(true)));
+
+	slack.send(payload);	
+}
+catch (IOException e) {
+	// Something went wrong.
+}
+``` 
+
 ## License
 
 Copyright 2014 James Jory
